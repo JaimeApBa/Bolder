@@ -94,3 +94,8 @@ a {
 .m-25 {
     margin-bottom: 25px;
 }
+
+.footerAuth {
+    display: flex;
+    justify-content: space-between;
+}

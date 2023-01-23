@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useForm } from '../../hooks';
 import '../styles/authStyles.css';
 import { useContext, useState } from 'react';
@@ -12,8 +12,10 @@ const formData = {
 
 export const LoginPage = () => {
   const hasError = false;
-  const [formSubmitted, setFormSubmitted] = useState(false)
-
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const location = useLocation();
+  const { path, product } = location.state;
+   
   const { 
     formState, email, password, onInputChange } = useForm( formData );
 
@@ -63,10 +65,14 @@ export const LoginPage = () => {
         {
           (formSubmitted && !!errorMessage) &&<p className='errorField red'>{ errorMessage }</p>
         }
-
-        <p className='linkToRegister'>
-          <Link to="/register">Registrate</Link>
-        </p>
+        <div className='footerAuth'>
+          <span className='linkToRegister'>
+            <Link to={ path } state={ product }>Volver</Link>
+          </span>
+          <span className='linkToRegister'>
+            <Link to="/register">Registrate</Link>
+          </span>
+        </div>
       </form>
     </div>
   )

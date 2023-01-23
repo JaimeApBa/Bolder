@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { AuthRoutes } from "../auth";
-import { BolderRoutes, HomePage } from "../bolder";
+import { BolderRoutes } from "../bolder";
 import { RoutesContextLayout } from "../bolder/context";
 import { useCheckAuth } from "../hooks";
 import { CheckingAuth } from "../ui/CheckingAuth";
@@ -19,7 +19,7 @@ export const BolderAppRouter = () => {
   return (
     <Routes>
         <Route element={ <RoutesContextLayout /> }>
-          <Route path="/" element={ <HomePage /> } />
+          <Route path="*" element={ <BolderRoutes /> } />
           <Route path="/auth/*" element={ <AuthRoutes /> } />
           <Route path="/*" element={ <Navigate to="/" /> } />
         </Route>

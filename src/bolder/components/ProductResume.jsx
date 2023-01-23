@@ -1,12 +1,22 @@
+import { useLocation, useNavigate } from "react-router-dom";
+import { AddingToCart } from "./AddingToCart";
 
 export const ProductResume = (product) => {
+
+    const location = useLocation();
+    const navigate = useNavigate();
     
-    const { brend, model, name, description, image, price, rating, category } = product;
+    const { id, brend, model, name, description, image, price, rating, stock } = product;
+    const { pathname } = location;
 
     const starRating = {
         '--rating': rating
     }
     
+    const navigateTo = () => {
+        navigate(`/product/${ id }`, { state: product });
+    }
+
     return (
     <div className="product-resume-card">
         <div className="image-product">
@@ -14,7 +24,7 @@ export const ProductResume = (product) => {
         </div>
         <div className="product-body">
             <div className="product-details">
-                <h3>{ name }</h3>
+                <h3 className={ (pathname === '/') ? "title linkTo" : "title"} onClick={ navigateTo }>{ name }</h3>
                 <p>{ description }</p>
                 <p>
                     <span>Marca: </span>
@@ -27,8 +37,11 @@ export const ProductResume = (product) => {
             <div className="product-price">
                 <span className="price">{ price.toFixed(2) || '' } €</span>
             </div>
-            
         </div>
+        {
+            (pathname !== '/') 
+                && <AddingToCart stock={ stock } />
+        }
     </div>
   )
 }

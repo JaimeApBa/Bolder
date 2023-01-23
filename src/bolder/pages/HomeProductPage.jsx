@@ -5,7 +5,7 @@ import { ProductsContext } from '../context';
 
 // import products from '../../data/products.json';
 
-export const HomePage = () => {
+export const HomeProductPage = () => {
 
   const { loadingProducts, products, currentCategory, totalCategories } = useContext(ProductsContext);
   const [idCategory, setIdCategory] = useState([]);

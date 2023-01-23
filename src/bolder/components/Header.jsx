@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../auth/context';
 
 
@@ -8,9 +8,14 @@ export const Header = () => {
   
   const { status, logout, displayName } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
+  const { pathname } = location;
+  const { state:product } = location;
+  
   const onLogin = () => {
-    navigate("auth/login");
+    
+    navigate("/auth/login" ,{ state: { path: pathname, product: product }});
   }
 
   return (

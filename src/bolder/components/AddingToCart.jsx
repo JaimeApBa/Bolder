@@ -6,7 +6,7 @@ import { ProductsContext } from '../context';
 
 export const AddingToCart = (product) => {
     
-    const {  stock } = product;
+    const { stock } = product;
     const { status } = useContext(AuthContext);
     const { orderProducts, totalOrder } = useContext(ProductsContext);
     const selectElem = useRef();
@@ -28,6 +28,7 @@ export const AddingToCart = (product) => {
             qtty: Number(value),
             totalProduct: product.price * Number(value)
         };
+        
         if(totalOrder.products) {
             checkIfExistInOrder(newProduct, Number(value));
             
@@ -48,24 +49,20 @@ export const AddingToCart = (product) => {
     }
 
     const checkIfExistInOrder = (newProduct, value) => {
-        
-        const index = totalOrder.products.findIndex(el => el.product === newProduct.product);
-       
+
+        const index = totalOrder.products.findIndex(el => el.product.id === newProduct.product.id );
+
         if(index < 0) {
             totalOrder.products.push(newProduct);
-            const { price } = newProduct.product;
-            totalOrder.totalPrice += price * value;
         }
         else {
             const { product, qtty } = totalOrder.products[index];
             const { price } = product;
             totalOrder.products[index].totalProduct = price * value;
             totalOrder.products[index].qtty = value;
-            
-            const priceToAdd = ( price * value ) - ( price * qtty );
-            totalOrder.totalPrice += priceToAdd;
         }
 
+        totalOrder.totalPrice = totalOrder.products.map(el => el.totalProduct).reduce((accumulator, currentValue) => accumulator + currentValue);
     }
 
     return (

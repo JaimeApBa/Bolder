@@ -18,18 +18,22 @@ export const Header = () => {
     navigate("/auth/login" ,{ state: { path: pathname, product: product }});
   }
 
+  const goToShoppinCart = () => {
+    navigate("/shoppingcart");
+  }
+
   return (
     <header className='header animated'>
         <div className="logo vov slide-in-left">Bolder</div>
 
         {
-          (status === 'authenticated')
+          (status === 'authenticated' && pathname !== '/shoppingcart')
             ? (
               <>
-                <div className="shopping-cart">
-                <span className="material-symbols-outlined">
-                  shopping_cart_checkout
-                </span>
+                <div className="shopping-cart" onClick={ goToShoppinCart }>
+                  <span className="material-symbols-outlined">
+                    shopping_cart_checkout
+                  </span>
                 </div>
                 <div className='header-config'>
                   <span>Bienvenido, { displayName }</span>

@@ -23,6 +23,13 @@ export const productsReducer = (state, action) => {
           ...state,
           currentCategory: action.payload
         };
+
+    case types.order:
+        
+        return {
+          ...state,
+          totalOrder: action.payload
+        };
   
     default:
         return state;

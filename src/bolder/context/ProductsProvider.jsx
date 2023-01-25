@@ -9,7 +9,9 @@ export const ProductsProvider = ({ children }) => {
 
     const initialState = {
         products: [],
-        currentCategory: ["Todas las categorias"]
+        totalCategories: [],
+        currentCategory: ["Todas las categorias"],
+        totalOrder: [],
     }
 
     const [productsState, dispatch] = useReducer(productsReducer, initialState);
@@ -63,13 +65,24 @@ export const ProductsProvider = ({ children }) => {
         dispatch(action);
     }
 
+    const orderProducts = (newOrder) => {
+
+        const action = {
+            type: types.order,
+            payload: newOrder
+        }
+
+        dispatch(action);
+    }
+  
     return (
         <ProductsContext.Provider
             value={{
                 ...productsState,
                 loadingProducts,
                 getAllCategories,
-                getCurrentCategory
+                getCurrentCategory,
+                orderProducts
             }}
         >
             { children }

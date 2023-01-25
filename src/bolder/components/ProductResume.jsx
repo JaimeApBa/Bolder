@@ -18,7 +18,7 @@ export const ProductResume = (product) => {
     }
 
     return (
-    <div className="product-resume-card">
+    <div className={ (pathname === '/') ? "product-resume-card border-bottom-dashed" : "product-resume-card" }>
         <div className="image-product">
             <img src={ image[0]} className="image" alt="Image of the product"/>
         </div>
@@ -33,15 +33,15 @@ export const ProductResume = (product) => {
                     { model }
                 </p>
                 <div className="stars" style={ starRating }></div>
+                {
+                    (pathname !== '/') 
+                        && <AddingToCart { ...product } />
+                }
             </div>
             <div className="product-price">
                 <span className="price">{ price.toFixed(2) || '' } €</span>
             </div>
         </div>
-        {
-            (pathname !== '/') 
-                && <AddingToCart stock={ stock } />
-        }
     </div>
   )
 }

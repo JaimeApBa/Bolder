@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,400&family=Rubik+Mono+One&display=swap');
 
+:root {
+  --white: hsl(0, 0%, 100%);
+  --blue-dark: hsla(214, 91%, 25%, 0.8);
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -11,14 +16,10 @@ body {
   font-size: 16px;
 }
 
-#root{
-  height: 100%;
-}
-
 .container {
   display: flex; 
-  background-color: hsla(214, 91%, 25%, 0.8);
-  color: white;
+  background-color: var(--blue-dark);
+  color: var(--white);
   flex-flow: row wrap;
   padding: 0 20px;
 }
@@ -27,8 +28,10 @@ body {
   flex-direction: column;
 }
 .h-100 {
+  min-height: 100vh;
   height: 100%;
 }
+
 .mr-30 {
   margin-right: 30px;
 }
@@ -40,7 +43,7 @@ li {
   list-style: none;
 }
 .white {
-  color: hsl(0, 0%, 100%);
+  color: var(--white);
 }
 .hide {
   display: none;
@@ -50,4 +53,7 @@ li {
 }
 .font-size-20 {
   font-size: 20px;
+}
+.inline-table {
+  display: inline-table;
 }

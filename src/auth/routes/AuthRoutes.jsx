@@ -5,12 +5,14 @@ import { useCheckAuth } from "../../hooks";
 import { LoginPage, RegisterPage } from "../pages"
 
 export const AuthRoutes = () => {
+  
   const status = useCheckAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const { path, product } = location.state;
   
   useEffect(() => {
+    const path = location.state?.path;
+    const product = location.state?.product;
     if (status === 'authenticated' && product ) navigate(path, { state: product });
     
     if (status === 'authenticated' && !product ) navigate(path);
@@ -22,8 +24,8 @@ export const AuthRoutes = () => {
     
     <Routes>
         <Route path="login" element={ <LoginPage /> }/>
-        <Route path="auth/register" element={ <RegisterPage /> }/>
-        <Route path="/*" element={ <Navigate to="auth/login" /> }/>
+        <Route path="register" element={ <RegisterPage /> }/>
+        <Route path="/auth/*" element={ <Navigate to="login" /> }/>
     </Routes>
   )
 }

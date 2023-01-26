@@ -18,7 +18,9 @@ export const ShoppingCart = ( order ) => {
         
         const temp = products.filter(el => el.product !== order.product);
         totalOrder.products = temp;
-        totalOrder.totalPrice = temp.map(el => el.totalProduct).reduce((accumulator, currentValue) => accumulator + currentValue);
+        if(temp.length > 0) {
+            totalOrder.totalPrice = temp.map(el => el.totalProduct).reduce((accumulator, currentValue) => accumulator + currentValue);
+        } else totalOrder.totalPrice = 0;
         orderProducts(totalOrder);
        
     }

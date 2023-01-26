@@ -15,7 +15,7 @@ export const LoginPage = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const location = useLocation();
   const { path, product } = location.state;
-   
+  
   const { 
     formState, email, password, onInputChange } = useForm( formData );
 
@@ -70,7 +70,7 @@ export const LoginPage = () => {
             <Link to={ path } state={ product }>Volver</Link>
           </span>
           <span className='linkToRegister'>
-            <Link to="/register">Registrate</Link>
+            <Link to="/auth/register" state={{ path, product }}>Registrate</Link>
           </span>
         </div>
       </form>

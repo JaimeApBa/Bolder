@@ -15,12 +15,16 @@ export const AddingToCart = (product) => {
 
 
     const checkIfAuth = () => {
-        if(status === "authenticated") return;
+        if(status === "authenticated") return true;
 
-        return Swal.fire('Atención', 'Debes de acceder con tu usuario para poder realizar una compra', 'info');
+        Swal.fire('Atención', 'Debes de acceder con tu usuario para poder realizar una compra', 'info');
+        return false;
     }
 
     const addToCart = () => {
+        
+        if(!checkIfAuth()) return;
+
         const { value } = selectElem.current;
         
         const newProduct = {
@@ -56,7 +60,7 @@ export const AddingToCart = (product) => {
             totalOrder.products.push(newProduct);
         }
         else {
-            const { product, qtty } = totalOrder.products[index];
+            const { product } = totalOrder.products[index];
             const { price } = product;
             totalOrder.products[index].totalProduct = price * value;
             totalOrder.products[index].qtty = value;

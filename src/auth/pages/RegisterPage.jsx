@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
 import { useForm } from "../../hooks";
 import { ButtonComponent } from "../components/ButtonComponent";
 import { AuthContext } from "../context";
@@ -16,6 +17,9 @@ export const RegisterPage = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const { registerWithCredentials, errorMessage } = useContext(AuthContext);
+
+  const location = useLocation();
+  const { path, product } = location.state;
   
   const { 
     formState, displayName, email, password, onInputChange,
@@ -31,6 +35,8 @@ export const RegisterPage = () => {
     if(!isFormValid) return;
     
     registerWithCredentials(formState);
+
+    Swal.fire('Enhorabuena', 'Te has registrado correctamente','success');
  
   }
 
@@ -80,7 +86,7 @@ export const RegisterPage = () => {
         <ButtonComponent formSubmitted = { formSubmitted } buttonName = "Registrar" />
 
         <p className='linkToLogin'>
-          <Link to="/login">Inicia Sesión</Link>
+          <Link to="/auth/login" state={{ path, product }}>Inicia Sesión</Link>
         </p>
       </form>
     </div>

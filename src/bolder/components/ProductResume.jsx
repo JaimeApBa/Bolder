@@ -20,7 +20,7 @@ export const ProductResume = (product) => {
     return (
     <div className={ (pathname === '/') ? "product-resume-card border-bottom-dashed" : "product-resume-card" }>
         <div className="image-product">
-            <img src={ image[0]} className="image" alt="Image of the product"/>
+            <img src={ image[0]} className={ (pathname === `/product/${ id }`) ? "image modal" : "image"} alt="Image of the product"/>
         </div>
         <div className="product-body">
             <div className="product-details">

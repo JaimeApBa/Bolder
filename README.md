@@ -4,60 +4,39 @@ E-commerce donde encontrarás diversos tipos de productos.
  
 ## Descripción
 
-Página web que emula un E-commerce y en la cual se puede simular la compra de uno o varios productos que pertenecen a diferentes categorias, incluyendo carrito de la compra donde completar la transacción de los productos seleccionados.
+Página web que emula un E-commerce y en la cual se puede simular la compra de uno o varios productos que pertenecen a diferentes categorias. Es necesario el registro con un correo eletrónico para acceder al carrito de la compra donde completar la transacción de los productos seleccionados.
 
 ## Instalación
 
 #### Entorno de producción
 
-Esta página ha sido desplegada en [heroku](https://secure-waters-20164.herokuapp.com/) donde puedes comprobar su funcionamiento sin ningún tipo de instalación previa.
+Esta página ha sido desplegada en [Vercel](https://bolder-beta.vercel.app/) donde puedes comprobar su funcionamiento sin ningún tipo de instalación previa.
 
 #### Entorno local
 
+Esta página ha sido creada con React a través de la herramienta de desarrollo Vite.
+
 Instalaciones previas:
-1. Base de datos MySQL: Instalar un servidor Apache con base datos tipo [XAMPP](https://www.apachefriends.org/download.html) o [MAMP](https://www.mamp.info/en/downloads/).
-2. [NodeJS](https://nodejs.org/en/).
-3. [Angular CLI](https://angular.io/cli).
+1. [NodeJS](https://nodejs.org/en/).
 
-Iniciar el servidor Apache y importar la base de datos que se encuentra en la carpeta *public/rickandmorty.sql*. En el archivo *config/db.js* se deben cambiar los datos de conexión a la base de datos, en caso que sea necesario.
-
-En la carpeta raíz, se encuentra el backEnd cuya instalación de todas las dependencias se debe realizar a través de Npm:
+A continuación instalar todos los módulos a través de npm o yarn:
 
 ```shell
     # Clonar o instalar comandos
-    npm install
+    npm install 
 ```
-
-Al acabar la instalación, iniciamos el servidor en *http://localhost:3000* con el siguiente comando:
-
 ```shell
-    # test o ejecutar commandos
-    node app
-```
-
-A continuación es necesario instalar todos los módulos de Angular para el FrontEnd en otra ventana de la consola, con lo que hemos de acceder primero a la carpeta y realizar la instalación:
-
-```shell
-    # acceder a la carpeta del FrontEnd
-    cd rickandmorty
     # Clonar o instalar comandos
-    npm install
+    yarn 
 ```
 
-Iniciamos el FrontEnd en *http://localhost:4200* para poder acceder a la página web:
-
-```shell
-    # test o ejecutar commandos
-    ng serve
-```
 
 ## Uso
 
-Es necesario el registro previo para acceder al contenido de la página web a través de un formulario al cual se puede acceder desde la página de inicio. Es obligatorio proveer de un correo electrónico y una contraseña.
+Puedes navegar libremente por página y mirar los diferentes productos expuestos. Para añadir algún elemento al carrito de compra es necesario registrarse e iniciar sesión.
 
-Una vez registrado, ya se puede tener acceso.
+Una vez registrado, ya se puede tener acceso al carrito y completar la compra.
 
-Para guardar/quitar algún personaje de favoritos tan solo hay que clickar en el icono del corazón de la ficha del personaje seleccionado.
 
 ## Contribuciones
 
